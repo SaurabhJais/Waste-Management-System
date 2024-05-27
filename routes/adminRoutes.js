@@ -4,10 +4,11 @@ const adminController = require("../controllers/adminController");
 const authMiddleware = require("../middleware/adminAuthMiddleware");
 const requestMiddleware = require("../middleware/requestMiddleware");
 let session = require("express-session");
+require("dotenv").config();
 
 
 router.use(session({
-    secret: "This is session secret",
+    secret: process.env.session_secret,
     resave: false,
     saveUninitialized: false
 }));
